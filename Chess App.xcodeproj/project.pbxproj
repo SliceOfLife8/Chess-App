@@ -13,6 +13,12 @@
 		B67DF52C26A18AD600C30EED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67DF52A26A18AD600C30EED /* LaunchScreen.storyboard */; };
 		B67DF53726A18AD700C30EED /* Chess_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF53626A18AD700C30EED /* Chess_AppTests.swift */; };
 		B67DF54226A18AD700C30EED /* Chess_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF54126A18AD700C30EED /* Chess_AppUITests.swift */; };
+		B67DF55026A1951C00C30EED /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67DF54F26A1951C00C30EED /* ViewController.xib */; };
+		B67DF55426A1958D00C30EED /* ContentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55326A1958D00C30EED /* ContentButton.swift */; };
+		B67DF55726A1960D00C30EED /* Ext_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55626A1960D00C30EED /* Ext_UIColor.swift */; };
+		B67DF55B26A19F5300C30EED /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55926A19F5300C30EED /* BoardCell.swift */; };
+		B67DF55C26A19F5300C30EED /* BoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67DF55A26A19F5300C30EED /* BoardCell.xib */; };
+		B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,12 @@
 		B67DF53D26A18AD700C30EED /* Chess AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chess AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67DF54126A18AD700C30EED /* Chess_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess_AppUITests.swift; sourceTree = "<group>"; };
 		B67DF54326A18AD700C30EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B67DF54F26A1951C00C30EED /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		B67DF55326A1958D00C30EED /* ContentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentButton.swift; sourceTree = "<group>"; };
+		B67DF55626A1960D00C30EED /* Ext_UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_UIColor.swift; sourceTree = "<group>"; };
+		B67DF55926A19F5300C30EED /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		B67DF55A26A19F5300C30EED /* BoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardCell.xib; sourceTree = "<group>"; };
+		B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,10 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				B67DF51F26A18AD400C30EED /* AppDelegate.swift */,
-				B67DF52326A18AD400C30EED /* ViewController.swift */,
 				B67DF52826A18AD600C30EED /* Assets.xcassets */,
 				B67DF52A26A18AD600C30EED /* LaunchScreen.storyboard */,
 				B67DF52D26A18AD600C30EED /* Info.plist */,
+				B67DF55D26A1B31A00C30EED /* ViewControllers */,
+				B67DF55226A1956A00C30EED /* Components */,
+				B67DF55526A195ED00C30EED /* Extensions */,
 			);
 			path = "Chess App";
 			sourceTree = "<group>";
@@ -120,6 +134,42 @@
 				B67DF54326A18AD700C30EED /* Info.plist */,
 			);
 			path = "Chess AppUITests";
+			sourceTree = "<group>";
+		};
+		B67DF55226A1956A00C30EED /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B67DF55826A19F3400C30EED /* CollectionView */,
+				B67DF55326A1958D00C30EED /* ContentButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B67DF55526A195ED00C30EED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B67DF55626A1960D00C30EED /* Ext_UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B67DF55826A19F3400C30EED /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B67DF55926A19F5300C30EED /* BoardCell.swift */,
+				B67DF55A26A19F5300C30EED /* BoardCell.xib */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		B67DF55D26A1B31A00C30EED /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B67DF52326A18AD400C30EED /* ViewController.swift */,
+				B67DF54F26A1951C00C30EED /* ViewController.xib */,
+				B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +276,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B67DF52C26A18AD600C30EED /* LaunchScreen.storyboard in Resources */,
+				B67DF55026A1951C00C30EED /* ViewController.xib in Resources */,
+				B67DF55C26A19F5300C30EED /* BoardCell.xib in Resources */,
 				B67DF52926A18AD600C30EED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,7 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67DF55B26A19F5300C30EED /* BoardCell.swift in Sources */,
+				B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */,
 				B67DF52426A18AD400C30EED /* ViewController.swift in Sources */,
+				B67DF55726A1960D00C30EED /* Ext_UIColor.swift in Sources */,
+				B67DF55426A1958D00C30EED /* ContentButton.swift in Sources */,
 				B67DF52026A18AD400C30EED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -405,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
