@@ -20,19 +20,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1J6-rq-362" userLabel="Container View">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdO-Ks-jTh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zxN-RX-Y22" userLabel="chess icon">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="HdO-Ks-jTh" secondAttribute="bottom" id="3Zr-jZ-MUO"/>
-                            <constraint firstItem="HdO-Ks-jTh" firstAttribute="leading" secondItem="1J6-rq-362" secondAttribute="leading" id="Dus-V6-sih"/>
-                            <constraint firstAttribute="trailing" secondItem="HdO-Ks-jTh" secondAttribute="trailing" id="T5U-RP-qRf"/>
-                            <constraint firstItem="HdO-Ks-jTh" firstAttribute="top" secondItem="1J6-rq-362" secondAttribute="top" id="cMD-ah-7re"/>
+                            <constraint firstAttribute="bottom" secondItem="zxN-RX-Y22" secondAttribute="bottom" id="5EU-CX-2Ml"/>
+                            <constraint firstItem="zxN-RX-Y22" firstAttribute="top" secondItem="1J6-rq-362" secondAttribute="top" id="JSR-YW-9Df"/>
+                            <constraint firstAttribute="trailing" secondItem="zxN-RX-Y22" secondAttribute="trailing" id="dda-Cc-B2r"/>
+                            <constraint firstItem="zxN-RX-Y22" firstAttribute="leading" secondItem="1J6-rq-362" secondAttribute="leading" id="shZ-nd-ISL"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,8 +41,8 @@
                 <constraint firstAttribute="trailing" secondItem="1J6-rq-362" secondAttribute="trailing" id="bYH-G4-s2U"/>
             </constraints>
             <connections>
+                <outlet property="chessIcon" destination="zxN-RX-Y22" id="sIB-jQ-c4p"/>
                 <outlet property="containerView" destination="1J6-rq-362" id="waU-an-gMp"/>
-                <outlet property="positionLbl" destination="HdO-Ks-jTh" id="nWI-TI-aaE"/>
             </connections>
             <point key="canvasLocation" x="28" y="130"/>
         </collectionViewCell>

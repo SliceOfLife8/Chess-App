@@ -19,6 +19,8 @@
 		B67DF55B26A19F5300C30EED /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55926A19F5300C30EED /* BoardCell.swift */; };
 		B67DF55C26A19F5300C30EED /* BoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B67DF55A26A19F5300C30EED /* BoardCell.xib */; };
 		B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */; };
+		B69993AC26A205680062D848 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993AB26A205680062D848 /* Point.swift */; };
+		B69993AF26A2D76A0062D848 /* Ext_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		B67DF55926A19F5300C30EED /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		B67DF55A26A19F5300C30EED /* BoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardCell.xib; sourceTree = "<group>"; };
 		B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UICollectionView.swift"; sourceTree = "<group>"; };
+		B69993AB26A205680062D848 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_UICollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				B67DF52D26A18AD600C30EED /* Info.plist */,
 				B67DF55D26A1B31A00C30EED /* ViewControllers */,
 				B67DF55226A1956A00C30EED /* Components */,
+				B69993AA26A205530062D848 /* Models */,
 				B67DF55526A195ED00C30EED /* Extensions */,
 			);
 			path = "Chess App";
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				B67DF55626A1960D00C30EED /* Ext_UIColor.swift */,
+				B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +176,14 @@
 				B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B69993AA26A205530062D848 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B69993AB26A205680062D848 /* Point.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,8 +319,10 @@
 			files = (
 				B67DF55B26A19F5300C30EED /* BoardCell.swift in Sources */,
 				B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */,
+				B69993AF26A2D76A0062D848 /* Ext_UICollectionView.swift in Sources */,
 				B67DF52426A18AD400C30EED /* ViewController.swift in Sources */,
 				B67DF55726A1960D00C30EED /* Ext_UIColor.swift in Sources */,
+				B69993AC26A205680062D848 /* Point.swift in Sources */,
 				B67DF55426A1958D00C30EED /* ContentButton.swift in Sources */,
 				B67DF52026A18AD400C30EED /* AppDelegate.swift in Sources */,
 			);

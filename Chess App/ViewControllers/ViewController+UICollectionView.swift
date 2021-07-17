@@ -23,14 +23,28 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         chessBoardCV.dataSource = self
     }
     
+    /// #Estimate size of cells depending on default paddings
+    private func estimateSizeOfCells() -> CGSize {
+        let _numberOfElementsInRow = CGFloat(boardSize)
+        let standardPaddings: CGFloat = 8 * 2 // 16 -> leading & trailing
+        let remainingWidth = screenWidth - standardPaddings
+        let itemSize = CGSize(width: remainingWidth / _numberOfElementsInRow, height: remainingWidth / _numberOfElementsInRow)
+        
+        return itemSize
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfElementsInRow*numberOfElementsInRow
+        return boardSize
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return boardSize
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! BoardCell
         
-        let value = findCellFormat(indexPath.row)
+        let value = findCellFormat(indexPath.row + indexPath.section)
         cell.setupCell(with: value)
         
         return cell
@@ -38,32 +52,26 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func findCellFormat(_ index: Int) -> BoardColorValues {
         var value: BoardColorValues
-        
-        let chessRow = index / numberOfElementsInRow
-        if chessRow % 2 == 0 {
-            if index % 2 == 0 {
-                value = .light
-            }else{
-                value = .dark
-            }
-        } else{
-            if index % 2 == 0 {
-                value = .dark
-            }else{
-                value = .light
-            }
-        }
+        value = (index.isMultiple(of: 2) ? .light : .dark)
         
         return value
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if let cell = collectionView.cellForItem(at: indexPath) as? BoardCell {
+            let isFirst = selectedIndexPaths.count == 0
             if selectedIndexPaths.count.oneOf(other: 0, 1) {
-                cell.addOverlayView((selectedIndexPaths.count == 0) ? .green : .red)
-                selectedIndexPaths[indexPath] = selectedIndexPaths.count == 0
+                cell.addOverlayView(isFirst ? .green : .red, knightAppeared: isFirst)
+                selectedIndexPaths[indexPath] = isFirst
                 if selectedIndexPaths.count == 2 {
                     possiblePaths.isHidden = false
+                    resetBtn.isEnabled = true
+                }
+                /// Add points
+                if isFirst {
+                    startingPoint = Point(x: indexPath.row, y: indexPath.section)
+                } else {
+                    finishingPoint = Point(x: indexPath.row, y: indexPath.section)
                 }
             } else {
                 collectionView.deselectItem(at: indexPath, animated: false)
@@ -79,33 +87,19 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                 if selectedIndexPaths[indexPath] == true {
                     collectionView.deselectAllItems(animated: true)
                     selectedIndexPaths.removeAll()
+                    restore()
                 } else {
                     collectionView.deselectItem(at: indexPath, animated: true)
                     selectedIndexPaths.removeValue(forKey: indexPath)
+                    finishingPoint = nil
                 }
                 possiblePaths.isHidden = true
+                resetBtn.isEnabled = false
                 
                 return false
             }
         }
         return true
-    }
-    
-    
-    /// #Explicit formula for sequence 7,15,23... Currently not used!
-    fileprivate func arithmeticSequence(_ candidate: Int) -> Bool {
-        let firstMember = 7
-        let numOfMembers = 1...8
-        let difference = 8
-        
-        for i in numOfMembers {
-            let a = firstMember + (i - 1) * difference
-            if candidate == a {
-                return true
-            }
-        }
-        
-        return false
     }
     
 }
@@ -114,12 +108,5 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 extension Equatable {
     func oneOf(other: Self...) -> Bool {
         return other.contains(self)
-    }
-}
-
-extension UICollectionView {
-    func deselectAllItems(animated: Bool) {
-        guard let selectedItems = indexPathsForSelectedItems else { return }
-        for indexPath in selectedItems { deselectItem(at: indexPath, animated: animated) }
     }
 }

@@ -36,7 +36,7 @@ class BoardCell: UICollectionViewCell {
     
     // MARK: - Outlets
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var positionLbl: UILabel!
+    @IBOutlet weak var chessIcon: UIImageView!
     
     override public var isSelected: Bool {
         didSet {
@@ -49,12 +49,12 @@ class BoardCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 2
-        positionLbl.isHidden = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         value = nil
+        chessIcon.image = nil
     }
     
     func setupCell(with value: BoardColorValues) {
@@ -62,13 +62,17 @@ class BoardCell: UICollectionViewCell {
         containerView.backgroundColor = value.color
     }
     
-    func addOverlayView(_ color: UIColor) {
+    func addOverlayView(_ color: UIColor, knightAppeared: Bool = false) {
         overlayView.backgroundColor = color.withAlphaComponent(0.3)
         overlayView.frame = self.bounds
         self.addSubview(overlayView)
+        if knightAppeared {
+            chessIcon.image = UIImage(named: "chess")
+        }
     }
     
     private func removeOverlay() {
+        chessIcon.image = nil
         self.subviews.forEach { subview in
             if subview.tag == 8 {
                 subview.removeFromSuperview()
