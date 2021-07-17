@@ -21,6 +21,7 @@
 		B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */; };
 		B69993AC26A205680062D848 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993AB26A205680062D848 /* Point.swift */; };
 		B69993AF26A2D76A0062D848 /* Ext_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */; };
+		B69993B226A31FC20062D848 /* Ext_UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993B126A31FC20062D848 /* Ext_UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		B67DF55E26A1B33A00C30EED /* ViewController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UICollectionView.swift"; sourceTree = "<group>"; };
 		B69993AB26A205680062D848 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_UICollectionView.swift; sourceTree = "<group>"; };
+		B69993B126A31FC20062D848 /* Ext_UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				B67DF55626A1960D00C30EED /* Ext_UIColor.swift */,
 				B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */,
+				B69993B126A31FC20062D848 /* Ext_UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			files = (
 				B67DF55B26A19F5300C30EED /* BoardCell.swift in Sources */,
 				B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */,
+				B69993B226A31FC20062D848 /* Ext_UIView.swift in Sources */,
 				B69993AF26A2D76A0062D848 /* Ext_UICollectionView.swift in Sources */,
 				B67DF52426A18AD400C30EED /* ViewController.swift in Sources */,
 				B67DF55726A1960D00C30EED /* Ext_UIColor.swift in Sources */,

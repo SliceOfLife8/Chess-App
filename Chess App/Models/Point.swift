@@ -26,4 +26,13 @@ struct Point: Equatable {
         }
         return true
     }
+    
+    /// #Convert (x, y) coordinates into chessBoard coordinate system like (0, 0) -> (A, sizeOfBoard)
+    func convertPoint(_ boardSize: Int) -> String {
+        let alphabetChars = (97...122).map({Character(UnicodeScalar($0))})
+        let xPos = alphabetChars[self.y].uppercased()
+        let yPos = String(boardSize - self.x)
+        
+        return "\(xPos)\(yPos)"
+    }
 }

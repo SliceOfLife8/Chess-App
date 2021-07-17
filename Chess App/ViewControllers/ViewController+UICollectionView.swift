@@ -68,10 +68,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
                     resetBtn.isEnabled = true
                 }
                 /// Add points
+                /// #Important: We need reference to chessBoard coordinate system as (x,y) of cells. For example cell -> (row: 2, section: 3) is actually (x: 3, y: 2) of coordinate system.
                 if isFirst {
-                    startingPoint = Point(x: indexPath.row, y: indexPath.section)
+                    startingPoint = Point(x: indexPath.section, y: indexPath.row)
                 } else {
-                    finishingPoint = Point(x: indexPath.row, y: indexPath.section)
+                    finishingPoint = Point(x: indexPath.section, y: indexPath.row)
                 }
             } else {
                 collectionView.deselectItem(at: indexPath, animated: false)
@@ -82,22 +83,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        if let selectedItems = collectionView.indexPathsForSelectedItems {
-            if selectedItems.contains(indexPath) {
-                if selectedIndexPaths[indexPath] == true {
-                    collectionView.deselectAllItems(animated: true)
-                    selectedIndexPaths.removeAll()
-                    restore()
-                } else {
-                    collectionView.deselectItem(at: indexPath, animated: true)
-                    selectedIndexPaths.removeValue(forKey: indexPath)
-                    finishingPoint = nil
-                }
-                possiblePaths.isHidden = true
-                resetBtn.isEnabled = false
-                
-                return false
+        if selectedIndexPaths.keys.contains(indexPath) {
+            if selectedIndexPaths[indexPath] == true {
+                collectionView.deselectAllItems(animated: true)
+                selectedIndexPaths.removeAll()
+                restore()
+            } else {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                selectedIndexPaths.removeValue(forKey: indexPath)
+                finishingPoint = nil
             }
+            possiblePaths.isHidden = true
+            resetBtn.isEnabled = false
+            
+            return false
         }
         return true
     }

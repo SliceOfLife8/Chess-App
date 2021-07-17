@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="Chess_App" customModuleProvider="target">
             <connections>
                 <outlet property="chessBoardCV" destination="kdT-qN-U2a" id="7ty-CM-ujI"/>
+                <outlet property="currentPathLbl" destination="cNo-g6-HnZ" id="fyb-cz-7ax"/>
                 <outlet property="descLbl" destination="9wI-2l-9pz" id="QWt-73-XyP"/>
                 <outlet property="possiblePaths" destination="wIz-2s-5S8" id="tdJ-T1-RtI"/>
                 <outlet property="resetBtn" destination="WgT-4n-uu7" id="kSw-fy-B9V"/>
@@ -26,6 +27,12 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="uWz-N7-8Os">
                     <rect key="frame" x="24" y="824" width="366" height="48"/>
                     <subviews>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNo-g6-HnZ" userLabel="paths">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" systemColor="linkColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIz-2s-5S8" userLabel="Possible paths" customClass="ContentButton" customModule="Chess_App" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
                             <constraints>
@@ -80,6 +87,9 @@
         </view>
     </objects>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
