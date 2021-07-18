@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var boardSize: Int = [6,7,8,9,10,11,12,13,14,15,16].randomElement() ?? 6 // chessboard size based on a range of integers, 6<=N<=16 where N is the size
     let screenWidth: CGFloat = UIScreen.main.bounds.size.width
     let alphabetChars = (97...122).map({Character(UnicodeScalar($0))})
+    var numbers: [Int] = []
     
     var selectedIndexPaths: [IndexPath: Bool] = [:] /// Track selected indexPaths. We need reference to selected cells as we don't have index of them when reuse automatically occrus. Bool refes to starting point.
     var startingPoint: Point?
@@ -29,7 +30,8 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var chessBoardCV: UICollectionView!
-    @IBOutlet weak var numbersCVHeight: NSLayoutConstraint!
+    @IBOutlet weak var alphabetCVHeight: NSLayoutConstraint!
+    @IBOutlet weak var alphabetCV: UICollectionView!
     @IBOutlet weak var numbersCV: UICollectionView!
     @IBOutlet weak var resetBtn: ContentButton!
     @IBOutlet weak var possiblePaths: ContentButton!

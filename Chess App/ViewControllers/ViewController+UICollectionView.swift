@@ -12,29 +12,35 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func setupCollectionView() {
         let itemSize = estimateSizeOfCells()
         let flowLayout = chessBoardCV.collectionViewLayout as? UICollectionViewFlowLayout
-        flowLayout?.itemSize = CGSize(width: itemSize.width, height: itemSize.height)
         flowLayout?.minimumLineSpacing = 0
         flowLayout?.minimumInteritemSpacing = 0
+        flowLayout?.itemSize = CGSize(width: itemSize.width, height: itemSize.height)
         
         chessBoardCV.register(UINib(nibName: boardCellIdentifier, bundle: nil), forCellWithReuseIdentifier: boardCellIdentifier)
         chessBoardCV.allowsMultipleSelection = true
         chessBoardCV.backgroundColor = .clear
         chessBoardCV.delegate = self
         chessBoardCV.dataSource = self
+        /// Alphabet CV
+        alphabetCV.register(NumberCell.self, forCellWithReuseIdentifier: numbersCellIdentifier)
+        (alphabetCV.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: itemSize.width, height: itemSize.height)
+        alphabetCVHeight.constant = itemSize.height
+        alphabetCV.delegate = self
+        alphabetCV.dataSource = self
         /// Numbers CV
         numbersCV.register(NumberCell.self, forCellWithReuseIdentifier: numbersCellIdentifier)
-        (numbersCV.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: itemSize.width, height: itemSize.height)
-        numbersCVHeight.constant = itemSize.height
+        (numbersCV.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: 30, height: itemSize.height)
         numbersCV.delegate = self
         numbersCV.dataSource = self
+        numbers = Array(1...boardSize).sorted { $0 > $1 }
     }
     
     /// #Estimate size of cells depending on default paddings
     private func estimateSizeOfCells() -> CGSize {
-        let _numberOfElementsInRow = CGFloat(boardSize)
-        let standardPaddings: CGFloat = 8 * 2 // 16 -> leading & trailing
+        let numberOfElementsInRow = CGFloat(boardSize)
+        let standardPaddings: CGFloat = 8 + 30 // 8 -> trailing, 30 -> numbersCV width
         let remainingWidth = screenWidth - standardPaddings
-        let itemSize = CGSize(width: remainingWidth / _numberOfElementsInRow, height: remainingWidth / _numberOfElementsInRow)
+        let itemSize = CGSize(width: remainingWidth / numberOfElementsInRow, height: remainingWidth / numberOfElementsInRow)
         
         return itemSize
     }
@@ -59,9 +65,15 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             cell.setupCell(with: value)
             
             return cell
-        } else {
+        } else if collectionView == alphabetCV {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: numbersCellIdentifier, for: indexPath) as! NumberCell
             cell.setupCell(alphabetChars[indexPath.row].uppercased())
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: numbersCellIdentifier, for: indexPath) as! NumberCell
+            let num = (indexPath.row < numbers.count) ? String(numbers[indexPath.row]) : ""
+            cell.setupCell(num)
             
             return cell
         }
