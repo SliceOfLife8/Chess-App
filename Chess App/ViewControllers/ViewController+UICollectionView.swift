@@ -24,7 +24,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         /// Alphabet CV
         alphabetCV.register(NumberCell.self, forCellWithReuseIdentifier: numbersCellIdentifier)
         (alphabetCV.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: itemSize.width, height: itemSize.height)
-        alphabetCVHeight.constant = itemSize.height
+        alphabetCVHeight.constant = itemSize.height + 1
+         /// Fix warning by making collectionView height greater than cells: The behavior of the UICollectionViewFlowLayout is not defined because the item height must be less than the height of the UICollectionView minus the section insets top and bottom values, minus the content insets top and bottom values.
         alphabetCV.delegate = self
         alphabetCV.dataSource = self
         /// Numbers CV
