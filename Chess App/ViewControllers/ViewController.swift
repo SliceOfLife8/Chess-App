@@ -10,9 +10,11 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Vars
-    var cellIdentifier = "BoardCell"
-    var boardSize: Int = [6,7,8,9,10].randomElement() ?? 6 // chessboard size based on a range of integers, 6<=N<=10 where N is the size
+    var boardCellIdentifier = "BoardCell"
+    var numbersCellIdentifier = "NumberCell"
+    var boardSize: Int = [6,7,8,9,10,11,12,13,14,15,16].randomElement() ?? 6 // chessboard size based on a range of integers, 6<=N<=16 where N is the size
     let screenWidth: CGFloat = UIScreen.main.bounds.size.width
+    let alphabetChars = (97...122).map({Character(UnicodeScalar($0))})
     
     var selectedIndexPaths: [IndexPath: Bool] = [:] /// Track selected indexPaths. We need reference to selected cells as we don't have index of them when reuse automatically occrus. Bool refes to starting point.
     var startingPoint: Point?
@@ -27,6 +29,8 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var chessBoardCV: UICollectionView!
+    @IBOutlet weak var numbersCVHeight: NSLayoutConstraint!
+    @IBOutlet weak var numbersCV: UICollectionView!
     @IBOutlet weak var resetBtn: ContentButton!
     @IBOutlet weak var possiblePaths: ContentButton!
     @IBOutlet weak var currentPathLbl: UILabel!
@@ -138,7 +142,6 @@ class ViewController: UIViewController {
                 /// Only for the last item of every path. Restore knight piece image.
                 /// endIndex is the array’s “past the end” position—that is, the position one greater than the last valid subscript argument.
                 if item_idx == item.endIndex - 1 {
-                    //duration += 1
                     self.chessBoardCV.performBatchUpdates({
                         if let myCell = self.chessBoardCV.cellForItem(at: IndexPath(row: entryPoint.y, section: entryPoint.x)) as? BoardCell {
                             myCell.restoreKnightPosition(duration)
@@ -168,23 +171,31 @@ class ViewController: UIViewController {
     
     /// #Show label for current path between starting & finishing points
     private func showCurrentPath(index: Int, duration: TimeInterval) {
+        let waitAnimation = "\nWait until animation is over!"
         if index == 0 { /// First
             currentPathLbl.isHidden = false
-            currentPathLbl.text = knightPathsDescription.first
+            currentPathLbl.text = "\(knightPathsDescription.first ?? "") \(waitAnimation)"
+            if knightPaths.count == 1 { /// Stop animation when knightPaths is exactly one.
+                stopAnimation()
+            }
         } else if index == knightPathsDescription.count - 1 { /// Last
             Timer.scheduledTimer(withTimeInterval: duration, repeats: false, block: { _ in
-                self.currentPathLbl.text = self.knightPathsDescription.last
-                // Hide currentPath after 4 seconds & restore interaction with view
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
-                    self.currentPathLbl.isHidden = true
-                    self.view.isUserInteractionEnabled = true
-                })
+                self.currentPathLbl.text = "\(self.knightPathsDescription.last ?? "") \(waitAnimation)"
+                self.stopAnimation()
             })
         } else {
             Timer.scheduledTimer(withTimeInterval: duration, repeats: false, block: { _ in
-                self.currentPathLbl.text = self.knightPathsDescription[index]
+                self.currentPathLbl.text = "\(self.knightPathsDescription[index]) \(waitAnimation)"
             })
         }
+    }
+    
+    /// Hide currentPath after 4 seconds & restore interaction with view
+    private func stopAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
+            self.currentPathLbl.isHidden = true
+            self.view.isUserInteractionEnabled = true
+        })
     }
     
     // MARK: - Actions

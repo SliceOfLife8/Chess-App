@@ -22,6 +22,7 @@
 		B69993AC26A205680062D848 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993AB26A205680062D848 /* Point.swift */; };
 		B69993AF26A2D76A0062D848 /* Ext_UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */; };
 		B69993B226A31FC20062D848 /* Ext_UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69993B126A31FC20062D848 /* Ext_UIView.swift */; };
+		B6A08A4726A4205C00F4C22E /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A08A4626A4205C00F4C22E /* NumberCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B69993AB26A205680062D848 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		B69993AE26A2D76A0062D848 /* Ext_UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_UICollectionView.swift; sourceTree = "<group>"; };
 		B69993B126A31FC20062D848 /* Ext_UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext_UIView.swift; sourceTree = "<group>"; };
+		B6A08A4626A4205C00F4C22E /* NumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			children = (
 				B67DF55926A19F5300C30EED /* BoardCell.swift */,
 				B67DF55A26A19F5300C30EED /* BoardCell.xib */,
+				B6A08A4626A4205C00F4C22E /* NumberCell.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				B67DF55F26A1B33A00C30EED /* ViewController+UICollectionView.swift in Sources */,
 				B69993B226A31FC20062D848 /* Ext_UIView.swift in Sources */,
 				B69993AF26A2D76A0062D848 /* Ext_UICollectionView.swift in Sources */,
+				B6A08A4726A4205C00F4C22E /* NumberCell.swift in Sources */,
 				B67DF52426A18AD400C30EED /* ViewController.swift in Sources */,
 				B67DF55726A1960D00C30EED /* Ext_UIColor.swift in Sources */,
 				B69993AC26A205680062D848 /* Point.swift in Sources */,

@@ -16,11 +16,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         flowLayout?.minimumLineSpacing = 0
         flowLayout?.minimumInteritemSpacing = 0
         
-        chessBoardCV.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        chessBoardCV.register(UINib(nibName: boardCellIdentifier, bundle: nil), forCellWithReuseIdentifier: boardCellIdentifier)
         chessBoardCV.allowsMultipleSelection = true
         chessBoardCV.backgroundColor = .clear
         chessBoardCV.delegate = self
         chessBoardCV.dataSource = self
+        /// Numbers CV
+        numbersCV.register(NumberCell.self, forCellWithReuseIdentifier: numbersCellIdentifier)
+        (numbersCV.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSize(width: itemSize.width, height: itemSize.height)
+        numbersCVHeight.constant = itemSize.height
+        numbersCV.delegate = self
+        numbersCV.dataSource = self
     }
     
     /// #Estimate size of cells depending on default paddings
@@ -38,16 +44,27 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return boardSize
+        if collectionView == chessBoardCV {
+            return boardSize
+        } else {
+            return 1
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! BoardCell
-        
-        let value = findCellFormat(indexPath.row + indexPath.section)
-        cell.setupCell(with: value)
-        
-        return cell
+        if collectionView == chessBoardCV {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: boardCellIdentifier, for: indexPath) as! BoardCell
+            let value = findCellFormat(indexPath.row + indexPath.section)
+            cell.setupCell(with: value)
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: numbersCellIdentifier, for: indexPath) as! NumberCell
+            cell.setupCell(alphabetChars[indexPath.row].uppercased())
+            
+            return cell
+        }
     }
     
     func findCellFormat(_ index: Int) -> BoardColorValues {

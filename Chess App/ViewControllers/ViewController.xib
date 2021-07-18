@@ -14,6 +14,8 @@
                 <outlet property="chessBoardCV" destination="kdT-qN-U2a" id="7ty-CM-ujI"/>
                 <outlet property="currentPathLbl" destination="cNo-g6-HnZ" id="fyb-cz-7ax"/>
                 <outlet property="descLbl" destination="9wI-2l-9pz" id="QWt-73-XyP"/>
+                <outlet property="numbersCV" destination="A3L-Of-Uak" id="OWC-77-haN"/>
+                <outlet property="numbersCVHeight" destination="eug-FS-s5I" id="RDR-u2-Vum"/>
                 <outlet property="possiblePaths" destination="wIz-2s-5S8" id="tdJ-T1-RtI"/>
                 <outlet property="resetBtn" destination="WgT-4n-uu7" id="kSw-fy-B9V"/>
                 <outlet property="view" destination="iN0-l3-epB" id="41G-bi-rBY"/>
@@ -27,7 +29,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="uWz-N7-8Os">
                     <rect key="frame" x="24" y="824" width="366" height="48"/>
                     <subviews>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNo-g6-HnZ" userLabel="paths">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNo-g6-HnZ" userLabel="paths">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" systemColor="linkColor"/>
@@ -58,8 +60,21 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" systemColor="systemGray3Color"/>
                 </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3L-Of-Uak" userLabel="Numbers CV">
+                    <rect key="frame" x="8" y="104" width="398" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="eug-FS-s5I"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xop-X6-WIx">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kdT-qN-U2a">
-                    <rect key="frame" x="8" y="104" width="398" height="696"/>
+                    <rect key="frame" x="8" y="154" width="398" height="646"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2k9-he-H9B">
                         <size key="itemSize" width="128" height="128"/>
@@ -74,13 +89,16 @@
             <constraints>
                 <constraint firstItem="kdT-qN-U2a" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="0Tq-bg-YoP"/>
                 <constraint firstItem="9wI-2l-9pz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="1c3-bB-0H5"/>
+                <constraint firstItem="A3L-Of-Uak" firstAttribute="top" secondItem="9wI-2l-9pz" secondAttribute="bottom" constant="16" id="CdZ-aj-QPw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kdT-qN-U2a" secondAttribute="trailing" constant="8" id="FIG-Ro-DXA"/>
+                <constraint firstItem="A3L-Of-Uak" firstAttribute="trailing" secondItem="kdT-qN-U2a" secondAttribute="trailing" id="GAe-TF-79k"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uWz-N7-8Os" secondAttribute="trailing" constant="24" id="GIG-l7-AyN"/>
                 <constraint firstAttribute="bottom" secondItem="uWz-N7-8Os" secondAttribute="bottom" constant="24" id="IXM-A1-aay"/>
-                <constraint firstItem="kdT-qN-U2a" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="afd-C7-6lt"/>
+                <constraint firstItem="A3L-Of-Uak" firstAttribute="leading" secondItem="kdT-qN-U2a" secondAttribute="leading" id="X5L-1S-yKe"/>
+                <constraint firstItem="A3L-Of-Uak" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="Z75-6K-qJJ"/>
                 <constraint firstItem="uWz-N7-8Os" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="ggL-kw-8Ew"/>
                 <constraint firstItem="uWz-N7-8Os" firstAttribute="top" secondItem="kdT-qN-U2a" secondAttribute="bottom" constant="24" id="hVR-SV-bR7"/>
-                <constraint firstItem="kdT-qN-U2a" firstAttribute="top" secondItem="9wI-2l-9pz" secondAttribute="bottom" constant="16" id="jqD-g8-LiO"/>
+                <constraint firstItem="kdT-qN-U2a" firstAttribute="top" secondItem="A3L-Of-Uak" secondAttribute="bottom" id="z3x-gk-r9W"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9wI-2l-9pz" secondAttribute="trailing" constant="24" id="zdp-Ve-Nuh"/>
             </constraints>
             <point key="canvasLocation" x="139" y="135"/>
